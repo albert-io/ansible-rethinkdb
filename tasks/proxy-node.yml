@@ -1,0 +1,32 @@
+- name: Ensure RethinkDB is not running
+  sudo: yes
+  service:
+    name: "{{rethinkdb_service_name}}"
+    state: stopped
+  tags:
+    - init
+    - rethinkdb
+
+- name: Remove rethinkdb service definition
+  file: 
+      state: absent
+      name: /etc/init.d/rethinkdb
+  become: yes
+- name: Create upstart service
+  sudo: yes
+  template:
+    src: rethinkdb-proxy.conf
+    dest: "/etc/init/rethinkdb-proxy.conf"
+    owner: "{{rethinkdb_user}}"
+    group: "{{rethinkdb_group}}"
+  tags:
+    - rethinkdb-proxy
+
+- name: Ensure RethinkDB-proxy is running
+  sudo: yes
+  service:
+    name: "rethinkdb-proxy"
+    state: running
+  tags:
+    - rethinkdb-proxy
+

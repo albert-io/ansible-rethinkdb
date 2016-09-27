@@ -6,6 +6,8 @@
 # ----
 
 rethinkdb_service_name: rethinkdb
+rethinkdb_is_proxy_node: no
+rethinkdb_proxy_join_address: no
 
 # The name for this server (as will appear in the metadata).
 # If not specified, it will be randomly chosen from a short list of names.
