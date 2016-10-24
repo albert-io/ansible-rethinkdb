@@ -1,7 +1,7 @@
 # See the [documentation] for help in configuring RethinkDB.
 # [documentation]: http://rethinkdb.com/docs/v0.8/advanced_topics/configuration_options.html
 
-
+rethinkdb_version=2.3.5
 # Meta
 # ----
 

@@ -49,7 +49,8 @@
   when: ansible_os_family == 'Debian'
   sudo: yes
   apt:
-    name: "rethinkdb"
+    name: "rethinkdb={{ rethinkdb_version }}~0{{ ansible_distribution_release }}"
+    install_recommends: yes
   tags:
     - deps
     - db
