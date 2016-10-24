@@ -1,13 +1,15 @@
 # See the [documentation] for help in configuring RethinkDB.
 # [documentation]: http://rethinkdb.com/docs/v0.8/advanced_topics/configuration_options.html
 
-rethinkdb_version=2.3.5
+
 # Meta
 # ----
 
 rethinkdb_service_name: rethinkdb
 rethinkdb_is_proxy_node: no
 rethinkdb_proxy_join_address: no
+
+rethinkdb_version: 2.3.5
 
 # The name for this server (as will appear in the metadata).
 # If not specified, it will be randomly chosen from a short list of names.

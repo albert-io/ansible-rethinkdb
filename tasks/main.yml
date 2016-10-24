@@ -11,14 +11,13 @@
 - meta: flush_handlers
 
 - name: Ensure RethinkDB is running
-  sudo: yes
-  service:
-    name: "{{rethinkdb_service_name}}"
-    state: running
+  become: yes
   when: not rethinkdb_is_proxy_node
+  service:
+    name: "{{ rethinkdb_service_name }}"
+    state: running
   tags:
     - init
     - rethinkdb
-
 - include: proxy-node.yml
   when: rethinkdb_is_proxy_node
