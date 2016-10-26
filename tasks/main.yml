@@ -5,7 +5,7 @@
 
 - include: install.yml
 - include: configure.yml
-  when: not rethinkdb_is_proxy_noe
+  when: not rethinkdb_is_proxy_node
 
 # Flush handlers now, so we avoid starting the process and then
 # restarting it immediately after notifications are flushed.
