@@ -1,9 +1,8 @@
 ---
-
 # Delegate further configuration to subtasks
 # placed in this same directory.
-
 - include: install.yml
+
 - include: configure.yml
   when: not rethinkdb_is_proxy_node
 
@@ -13,12 +12,17 @@
 
 - name: Ensure RethinkDB is running
   become: yes
-  when: not rethinkdb_is_proxy_node
+  when: not rethinkdb_is_proxy_node and not rethinkdb_disable_and_remove_service
   service:
     name: "{{ rethinkdb_service_name }}"
     state: running
   tags:
     - init
     - rethinkdb
+
+- include: disable-service.yml
+  when: rethinkdb_disable_and_remove_service or rethinkdb_is_proxy_node
+
 - include: proxy-node.yml
   when: rethinkdb_is_proxy_node
+

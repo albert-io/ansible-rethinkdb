@@ -109,3 +109,7 @@ rethinkdb_io_threads: 64
 
 # Enable direct I/O
 rethinkdb_direct_io_enabled: yes
+
+
+# Disable and remove service
+rethinkdb_disable_and_remove_service: no

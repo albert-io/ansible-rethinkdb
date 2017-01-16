@@ -1,17 +1,3 @@
-- name: Ensure RethinkDB is not running
-  sudo: yes
-  service:
-    name: "{{rethinkdb_service_name}}"
-    state: stopped
-  ignore_errors: yes
-  tags:
-    - rethinkdb-proxy
-
-- name: Remove rethinkdb service definition
-  file: 
-      state: absent
-      name: /etc/init.d/rethinkdb
-  become: yes
 - name: Create upstart service
   sudo: yes
   template:
